@@ -6,8 +6,7 @@ import ViewTransaction from "./ViewTransaction";
 
 const Home = () => {
   let navigate = useNavigate();
-  const credit = useState([]);
-  const debit = useState([]);
+  
 
   const handleClick = (e) => {
     if (e.target.id == "add") {
