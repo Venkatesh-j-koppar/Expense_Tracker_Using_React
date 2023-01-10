@@ -1,16 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../src/Home";
+import Home from "../src/Components/Home";
 import "../src/Style/moneytracker.css";
-import AddTransaction from "./AddTransaction";
-import ViewTransaction from "./ViewTransaction";
+import AddTransaction from "./Components/AddTransaction";
+import ViewTransaction from "./Components/ViewTransaction";
 import { useState } from "react";
 
 function App() {
-  const [credit, setCredit] = useState([]);
-  const [debit, setDebit] = useState([]);
-
+  const [expense, setExpense] = useState([]);
+  console.log(expense);
   return (
     <div className="App">
       <BrowserRouter>
@@ -19,12 +18,7 @@ function App() {
           <Route
             path="/add"
             element={
-              <AddTransaction
-                debit={debit}
-                setDebit={setDebit}
-                credit={credit}
-                setCredit={setCredit}
-              />
+              <AddTransaction expense={expense} setExpense={setExpense} />
             }
           ></Route>
           <Route path="/view" element={<ViewTransaction />}></Route>
