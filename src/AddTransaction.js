@@ -13,10 +13,14 @@ function AddTransaction(props) {
     setExpenseObject({ ...expenseObject, [name]: value });
   };
 
-  const handleSubmit = () => {
-    if (expenseObject.type == "credit") {
-      props.setCredit([...props.credit, expenseObject]);
-    }
+  const handleSubmit = (e) => {
+    // if (expenseObject.type == "credit") {
+    //   props.setCredit([...props.credit, expenseObject]);
+    // } else {
+    //   props.setDebit([...props.debit, expenseObject]);
+    // }
+    e.preventDefault();
+    console.log(expenseObject);
   };
 
   return (
@@ -30,12 +34,12 @@ function AddTransaction(props) {
         onChange={handleChange}
       ></input>
       <label htmlFor="type">Enter The Expense Name</label>
-      <select onChange={handleChange}>
+      <select onChange={handleChange} name="type">
         <option>select Once</option>
-        <option value="credit" id="type" name="type">
+        <option value="credit" id="type">
           Credit
         </option>
-        <option value="debit" id="type" name="type">
+        <option value="debit" id="type">
           Debit
         </option>
       </select>
@@ -47,6 +51,7 @@ function AddTransaction(props) {
         name="amount"
         onChange={handleChange}
       ></input>
+      <button type="submit">Submit</button>
     </form>
   );
 }
