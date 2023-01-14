@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [expense, setExpense] = useState([]);
-  console.log(expense);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,7 +21,10 @@ function App() {
               <AddTransaction expense={expense} setExpense={setExpense} />
             }
           ></Route>
-          <Route path="/view" element={<ViewTransaction />}></Route>
+          <Route
+            path="/view"
+            element={<ViewTransaction expense={expense} />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -52,7 +52,7 @@ function AddTransaction(props) {
         name: "",
         type: "",
         amount: "",
-        date: "",
+        date: new Date(),
       });
     }
   };
@@ -62,63 +62,65 @@ function AddTransaction(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <span className="Success">{successMsg}</span>
+    <div className="Add">
+      <form onSubmit={handleSubmit}>
+        <span className="Success">{successMsg}</span>
 
-      <label htmlFor="name">Enter The Expense Name</label>
+        <label htmlFor="name">Enter The Expense Name</label>
 
-      <input
-        type="text"
-        placeholder="Expense Name"
-        id="name"
-        name="name"
-        onChange={handleChange}
-        value={expenseObject.name}
-      ></input>
+        <input
+          type="text"
+          placeholder="Expense Name"
+          id="name"
+          name="name"
+          onChange={handleChange}
+          value={expenseObject.name}
+        ></input>
 
-      <span className="Error">{nameError}</span>
+        <span className="Error">{nameError}</span>
 
-      <label htmlFor="type">Expense Type</label>
+        <label htmlFor="type">Expense Type</label>
 
-      <select onChange={handleChange} name="type" value={expenseObject.type}>
-        <option>Select One</option>
-        <option value="credit" id="type">
-          Credit
-        </option>
-        <option value="debit" id="type">
-          Debit
-        </option>
-      </select>
+        <select onChange={handleChange} name="type" value={expenseObject.type}>
+          <option>Select One</option>
+          <option value="credit" id="type">
+            Credit
+          </option>
+          <option value="debit" id="type">
+            Debit
+          </option>
+        </select>
 
-      <span className="Error">{expenseTypeError}</span>
+        <span className="Error">{expenseTypeError}</span>
 
-      <label htmlFor="amount">Enter The Expense Amount</label>
+        <label htmlFor="amount">Enter The Expense Amount</label>
 
-      <input
-        type="number"
-        placeholder="Expense Amount"
-        id="amount"
-        name="amount"
-        onChange={handleChange}
-        value={expenseObject.amount}
-      ></input>
+        <input
+          type="number"
+          placeholder="Expense Amount"
+          id="amount"
+          name="amount"
+          onChange={handleChange}
+          value={expenseObject.amount}
+        ></input>
 
-      <span className="Error">{expenseError}</span>
+        <span className="Error">{expenseError}</span>
 
-      <label htmlFor="date">Select Date</label>
-      <input
-        type="date"
-        name="date"
-        id="date"
-        onChange={handleChange}
-        value={expenseObject.date}
-      ></input>
+        <label htmlFor="date">Select Date</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          onChange={handleChange}
+          value={expenseObject.date}
+        ></input>
 
-      <div className="buttons-div">
-        <button type="submit">Submit</button>
-        <button onClick={buttonClick}>Back</button>
-      </div>
-    </form>
+        <div className="buttons-div">
+          <button type="submit">Submit</button>
+          <button onClick={buttonClick}>Back</button>
+        </div>
+      </form>
+    </div>
   );
 }
 
