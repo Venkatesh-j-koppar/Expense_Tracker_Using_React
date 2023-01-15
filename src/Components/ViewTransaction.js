@@ -64,7 +64,7 @@ function ViewTransaction(props) {
 
       <Transactiontable
         dataToBeDisplayed={dataToBeDisplayed}
-        setDataToBeDisplaye={setDataToBeDisplayed}
+        setExpense={props.setExpense}
       ></Transactiontable>
     </div>
   );

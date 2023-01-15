@@ -23,7 +23,9 @@ function App() {
           ></Route>
           <Route
             path="/view"
-            element={<ViewTransaction expense={expense} />}
+            element={
+              <ViewTransaction expense={expense} setExpense={setExpense} />
+            }
           ></Route>
         </Routes>
       </BrowserRouter>

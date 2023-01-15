@@ -4,6 +4,5 @@ export const sortByDate = (dateObject, dataObject) => {
     (data) =>
       data.date >= dateObject.startdate && data.date <= dateObject.enddate
   );
-  console.log(sortData);
   return sortData;
 };

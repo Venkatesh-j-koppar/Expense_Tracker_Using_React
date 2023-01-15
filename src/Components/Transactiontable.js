@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Edit from "./Edit";
 
-function Transactiontable({ dataToBeDisplayed, setDataToBeDisplayed }) {
+function Transactiontable({ dataToBeDisplayed, setExpense }) {
   const [displayTable, setDisplayTable] = useState(false);
+  const [edit, setEdit] = useState();
+
   useEffect(() => {
     if (dataToBeDisplayed.length > 0) {
       setDisplayTable(true);
@@ -9,6 +12,13 @@ function Transactiontable({ dataToBeDisplayed, setDataToBeDisplayed }) {
       setDisplayTable(false);
     }
   }, [dataToBeDisplayed]);
+
+  const handleEdit = (dataObject, index) => {
+    const newEntry = dataToBeDisplayed;
+    newEntry[index] = dataObject;
+    setExpense(newEntry);
+    setEdit();
+  };
 
   return displayTable ? (
     <div>
@@ -19,16 +29,34 @@ function Transactiontable({ dataToBeDisplayed, setDataToBeDisplayed }) {
             <th>Name</th>
             <th>Type</th>
             <th>Amount</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {dataToBeDisplayed.map((data1) => {
-            return (
+          {dataToBeDisplayed.map((data1, index) => {
+            return edit == index ? (
+              <Edit
+                datatobeedited={data1}
+                index={index}
+                handleEdit={handleEdit}
+              />
+            ) : (
               <tr>
                 <td>{data1.date}</td>
                 <td>{data1.name}</td>
                 <td>{data1.type}</td>
                 <td>{data1.amount}</td>
+                <td>
+                  <tr>
+                    <button
+                      onClick={() => {
+                        setEdit(index);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </tr>
+                </td>
               </tr>
             );
           })}

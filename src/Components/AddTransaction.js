@@ -113,6 +113,7 @@ function AddTransaction(props) {
           id="date"
           onChange={handleChange}
           value={expenseObject.date}
+          max={Date.now()}
         ></input>
 
         <div className="buttons-div">
